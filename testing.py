@@ -5,7 +5,10 @@ model = GPT2LMHeadModel.from_pretrained('gpt2')
 
 def text_generator(text):
     encode_text = tokenizer.encode(text, return_tensors='pt')
-    print (encode_text)
+    decode_text = tokenizer.decode(encode_text[0], skip_special_tokens=True)
+    print("Encoded Text:")
+    print(encode_text)
+    print("Decoded Text:")
+    print(decode_text)
 
 text_generated = text_generator("Hello my world")
-print(text_generated)
