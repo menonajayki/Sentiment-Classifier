@@ -1,11 +1,12 @@
+from flask import Flask, request, jsonify
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
+app = Flask(__name__)
 
 pad_token = 'pad_token'
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2-xl', padding_side='left')
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2', padding_side='left')
 tokenizer.add_special_tokens({'pad_token': pad_token})
-model = GPT2LMHeadModel.from_pretrained('gpt2-xl', pad_token_id=tokenizer.pad_token_id)
-
+model = GPT2LMHeadModel.from_pretrained('gpt2', pad_token_id=tokenizer.pad_token_id)
 
 def text_generator(input_texts):
     generated_texts = []
@@ -28,13 +29,24 @@ def text_generator(input_texts):
 
     return generated_texts
 
-input_texts = [
-    "Hello my world.", "This is fun."
-]
+
+@app.route("/")
+def home():
+    return app.send_static_file("index.html")
 
 
-generated_texts = text_generator(input_texts)
+@app.route("/generate", methods=["POST"])
+def generate_text():
+    data = request.json
+    input_text = data["input_text"]
 
-for i, text in enumerate(generated_texts):
-    print(f"Generated Text {i + 1}:")
-    print(text)
+    generated_texts = text_generator([input_text])
+
+    response = {
+        "generated_text": generated_texts[0]
+    }
+    return jsonify(response)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
