@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ab938e22-5339-4397-8810-5c46b8e4314d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gpt2-xl.py" beforeDir="false" afterPath="$PROJECT_DIR$/gpt2-xl.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +35,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Testing.executor": "Run",
+    "Python.gpt2-xl.executor": "Run",
     "Python.main.executor": "Run",
     "Python.testing.executor": "Run",
     "Python.text generation.executor": "Run",
